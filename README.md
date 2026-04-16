@@ -1,4 +1,4 @@
-﻿# FreshMart - Retail Insights
+# FreshMart - Retail Insights
 
 This project provides a data-driven solution for FreshMart, a regional supermarket chain, to optimize its inventory management.
 
@@ -32,9 +32,8 @@ The `schema.sql` script includes the following reports:
 1.  Execute the `schema.sql` script in your SQL database to create the tables and populate them with sample data.
 2.  Run the queries provided in the script to generate the reports.
 
+## ER Diagram
 
-<img width="725" height="350" alt="Er diagram" src="https://github.com/user-attachments/assets/674886ed-ea16-4875-922a-ef05577a9106" />
-
-##Er Diagram
-
-
+<p align="center">
+  <img width="725" height="350" alt="ER Diagram" src="https://github.com/user-attachments/assets/674886ed-ea16-4875-922a-ef05577a9106" />
+</p>
