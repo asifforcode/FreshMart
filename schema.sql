@@ -65,10 +65,21 @@ ON p.id = s.product_id
 AND s.sale_date >= CURDATE() - INTERVAL 60 DAY
 WHERE s.product_id IS NULL;
 
--- revenue by category
-SELECT c.name, SUM(p.price * s.qty) AS revenue
-FROM SalesTransactions s
-JOIN Products p ON s.product_id = p.id
-JOIN Categories c ON p.category_id = c.id
-WHERE MONTH(s.sale_date) = MONTH(CURDATE() - INTERVAL 1 MONTH)
-GROUP BY c.name;
+-- Highest revenue contribution category of last month
+SELECT 
+    c.name, 
+    SUM(p.price * s.qty) AS total_revenue
+FROM 
+    SalesTransactions s
+JOIN 
+    Products p ON s.product_id = p.id
+JOIN 
+    Categories c ON p.category_id = c.id
+WHERE 
+    s.sale_date >= DATE_FORMAT(CURDATE() - INTERVAL 1 MONTH, '%Y-%m-01') AND
+    s.sale_date < DATE_FORMAT(CURDATE(), '%Y-%m-01')
+GROUP BY 
+    c.name
+ORDER BY 
+    total_revenue DESC
+LIMIT 1;
